@@ -12,8 +12,14 @@ license that can be found in the file LICENSE.
 Requirements and usage
 ----------------------
 
-ljrr requires [lammps](http://lammps.sandia.gov) and
-[Make](http://www.gnu.org/software/make/).
+ljrr requires [lammps](http://lammps.sandia.gov),
+[Make](http://www.gnu.org/software/make/) and a program called `sftmpl` (for
+"Single file templater") that is available via pip
+
+    pip install sftmpl
+
+or at <https://github.com/pdebuyl/sftmpl>. If you do not have installation
+rights on your machine, you may use `pip install --user sftmpl`.
 The custom dump style for [H5MD](http://nongnu.org/h5md/) is available at
 https://github.com/pdebuyl/lammps and is needed to take advantage of the
 analysis tools in ljrr.
