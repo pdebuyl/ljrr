@@ -31,15 +31,15 @@ pair_modify shift yes
 neighbor 0.3 bin
 neigh_modify every 1 delay 1 check yes
 
-# Use nvt algorithm for temperature {temp} and damping time of 10
-fix 1 all nvt temp {temp} {temp} 10
+# Use nvt algorithm for temperature {temp} and damping time of 5
+fix 1 all nvt temp {temp} {temp} 5
 
 # Define thermodynamics output
 thermo_style custom step time temp ke evdwl press vol density
 thermo 100
 
 # Run without collecting trajectory data
-run 10000
+run 20000
 
 # Remove the thermostat and activate nve integration
 unfix 1
