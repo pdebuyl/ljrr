@@ -9,7 +9,7 @@ TEMPERATURE=0.85
 
 lj3d:
 	mkdir -p simu_lj3d_$(RUN)
-	(cd simu_lj3d_$(RUN) ; SEED=$(SEED) LMP="$(LMP)" ../run_lj3d.sh ../in.lj3d.tmpl --rho ${RHO} --temp ${TEMPERATURE} --side ${SIDE} --nsteps ${NSTEPS})
+	(cd simu_lj3d_$(RUN) ; SEED=$(SEED) LMP="$(LMP)" ../run_until_lj3d.sh ../in.lj3d.tmpl --rho ${RHO} --temp ${TEMPERATURE} --side ${SIDE} --nsteps ${NSTEPS})
 
 nist: TEMPERATURE=0.85
 nist: RUN=NIST_$(RHO)
