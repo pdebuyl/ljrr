@@ -25,25 +25,32 @@ velocity all create {temp} {seed}
 # Define Lennard-Jones interactions
 pair_style lj/cut 3.
 pair_coeff 1 1 1.0 1.0 3.
-pair_modify shift yes
+pair_modify tail yes
 
 # Setup neighbor list parameters
 neighbor 0.3 bin
 neigh_modify every 1 delay 1 check yes
 
-# Use nvt algorithm for temperature {temp} and damping time of 5
-fix 1 all nvt temp {temp} {temp} 5
+# Use velocity rescaling algorithm for temperature {temp}
+fix nve all nve
+fix resc all temp/rescale 200 {temp} {temp} 0.10 0.9
 
 # Define thermodynamics output
 thermo_style custom step time temp ke evdwl press vol density
 thermo 100
 
 # Run without collecting trajectory data
-run 20000
+run 10000
 
-# Remove the thermostat and activate nve integration
-unfix 1
-fix 1 all nve
+unfix resc
+fix resc all temp/rescale 500 {temp} {temp} 0.05 0.8
+run 10000
+unfix resc
+fix resc all temp/rescale 500 {temp} {temp} 0.05 0.7
+run 40000
+
+# Remove the thermostat
+unfix resc
 
 # Enable the collection of trajectory data
 dump hd1 all h5md 100 dump_3d.h5 position velocity force every 3
