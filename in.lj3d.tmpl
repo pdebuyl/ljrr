@@ -47,13 +47,13 @@ fix resc all temp/rescale 500 {temp} {temp} 0.05 0.8
 run 10000
 unfix resc
 fix resc all temp/rescale 500 {temp} {temp} 0.05 0.7
-run 40000
+run 10000
 
 # Remove the thermostat
 unfix resc
 
 # Enable the collection of trajectory data
-dump hd1 all h5md 100 dump_3d.h5 position velocity force every 3
+dump hd1 all h5md 400 dump_3d.h5 position velocity force every 3
 write_dump all h5md dump_3d.h5 file_from hd1 species
 
 # Run and collect trajectory data
