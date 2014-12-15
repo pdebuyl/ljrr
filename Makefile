@@ -44,4 +44,4 @@ data/nist_%_rdf.txt: simu_lj3d_NIST_%/dump_3d.h5 code/compute_rdf.py | data
 data:
 	mkdir -p data
 
-all_nist: $(foreach v, $(values), nist_$(v)_rho)
+all_nist: $(foreach v, $(values), data/nist_$(v)_rdf.txt)
