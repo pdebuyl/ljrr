@@ -51,6 +51,8 @@ To reproduce the test computation, invoke the make command.
 This runs simulations for all parameters of the nist benchmark and stores the
 simulation results in `simu_lj3d_NIST_{RHO}` (where `{RHO}` is the value of the
 density).
+The program `code/compute_rdf.py` then computes the radial distributions
+function from the simulation data and stores it in `data/nist_{RHO}_rdf.txt`.
 
 If a lammps executable named `lmp_mpi` is not found in your PATH environment
 variable, you may specify it on the command-line
