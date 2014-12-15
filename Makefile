@@ -38,7 +38,8 @@ data/nist_%_rdf.txt: simu_lj3d_NIST_%/dump_3d.h5 code/compute_rdf.py | data
 
 .SECONDARY: $(foreach v, $(values), simu_lj3d_NIST_$(v)/log.lammps) \
 	$(foreach v, $(values), simu_lj3d_NIST_$(v)/dump_3d.h5) \
-	$(foreach v, $(values), simu_lj3d_NIST_$(v)/in.lj3d)
+	$(foreach v, $(values), simu_lj3d_NIST_$(v)/in.lj3d) \
+	$(foreach v, $(values), data/nist_$(v)_rdf.txt)
 
 data:
 	mkdir -p data
