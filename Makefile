@@ -45,3 +45,6 @@ data:
 	mkdir -p data
 
 all_nist: $(foreach v, $(values), data/nist_$(v)_rdf.txt)
+
+data/nist_rdf.png: code/plot_rdf.py $(foreach v, $(values), data/nist_$(v)_rdf.txt)
+	python $< $@ $(foreach v, $(values), data/nist_$(v)_rdf.txt)
